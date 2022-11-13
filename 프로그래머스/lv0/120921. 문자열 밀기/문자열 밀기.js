@@ -1,9 +1,19 @@
 function solution(A, B) {
- const pushRight = str => [str[str.length - 1], ...str.slice(0, str.length - 1)].join('');
-  for (let i = 0; i <= A.length; i++) {
-    if (A === B) return i;
-    A = pushRight(A);
+  let Aarr = A.split("");
+  let n = 1;
+  if (A === B) {
+    return 0;
   }
-
+  while (n <= A.length) {
+    let tempRear = Aarr[Aarr.length - 1];
+    for (let i = Aarr.length - 1; i >= 0; --i) {
+      Aarr[i] = Aarr[i - 1] || "";
+    }
+    Aarr[0] = tempRear;
+    if (Aarr.join("") === B) {
+      return n;
+    }
+    n++;
+  }
   return -1;
 }
