@@ -1,27 +1,23 @@
 function solution(babbling) {
-    var answer = 0;
-      const words = ["aya", "ye", "woo", "ma"];
-  babbling.map((word) => {
-    let cnt = 0;
-    while (word.length > 0) {
-      if (word.startsWith(words[0])) {
-        word = word.slice(3);
-        cnt = 1;
-      } else if (word.startsWith(words[1])) {
-        word = word.slice(2);
-        cnt = 1;
-      } else if (word.startsWith(words[2])) {
-        word = word.slice(3);
-        cnt = 1;
-      } else if (word.startsWith(words[3])) {
-        word = word.slice(2);
-        cnt = 1;
+  var cnt = 0;
+  babbling.map((str) => {
+    while (str.length >= 0) {
+      if (str.length === 0) {
+        cnt += 1;
+        break;
+      }
+      if (str.startsWith("aya")) {
+        str = str.replace("aya", "");
+      } else if (str.startsWith("ye")) {
+        str = str.replace("ye", "");
+      } else if (str.startsWith("woo")) {
+        str = str.replace("woo", "");
+      } else if (str.startsWith("ma")) {
+        str = str.replace("ma", "");
       } else {
-        cnt = 0;
         break;
       }
     }
-    answer += cnt;
   });
-    return answer;
+  return cnt;
 }
